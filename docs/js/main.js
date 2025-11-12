@@ -1,9 +1,43 @@
 /**
  * Boulder Marketing - Main JavaScript
- * Consolidated and enhanced with mobile menu fixes
+ * Enhanced and optimized version with AOS support
  */
 
 document.addEventListener('DOMContentLoaded', function() {
+  
+  // ==========================================
+  // INITIALIZE AOS (ANIMATE ON SCROLL)
+  // ==========================================
+  if (typeof AOS !== 'undefined') {
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: true,
+      offset: 100,
+      disable: false
+    });
+  } else {
+    // Fallback if AOS is not loaded - use custom reveal
+    const revealElements = document.querySelectorAll('[data-aos]');
+    
+    if (revealElements.length > 0) {
+      const revealOnScroll = function() {
+        revealElements.forEach(function(el) {
+          const elementTop = el.getBoundingClientRect().top;
+          const windowHeight = window.innerHeight;
+          
+          if (elementTop < windowHeight * 0.85) {
+            el.classList.add('revealed');
+          }
+        });
+      };
+      
+      window.addEventListener('scroll', revealOnScroll);
+      // Initial check on page load
+      revealOnScroll();
+    }
+  }
+  
   // ==========================================
   // HEADER & MOBILE MENU
   // ==========================================
@@ -88,6 +122,19 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   
   // ==========================================
+  // SCROLL TO TOP BUTTON
+  // ==========================================
+  if (scrollTopBtn) {
+    scrollTopBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  }
+  
+  // ==========================================
   // SMOOTH SCROLL FOR ANCHOR LINKS
   // ==========================================
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -95,14 +142,14 @@ document.addEventListener('DOMContentLoaded', function() {
       const href = this.getAttribute('href');
       
       // Skip if it's just "#" (scroll to top button)
-      if (href === '#') {
+      if (href === '#' || href === '') {
         return;
       }
       
-      e.preventDefault();
-      
       const target = document.querySelector(href);
       if (target) {
+        e.preventDefault();
+        
         const headerHeight = header ? header.offsetHeight : 0;
         const targetPosition = target.getBoundingClientRect().top + window.pageYOffset;
         const offsetPosition = targetPosition - headerHeight - 20; // 20px extra padding
@@ -126,41 +173,8 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   
   // ==========================================
-  // SCROLL TO TOP BUTTON
+  // REVEAL TEXT ELEMENTS (for hero animations)
   // ==========================================
-  if (scrollTopBtn) {
-    scrollTopBtn.addEventListener('click', function(e) {
-      e.preventDefault();
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    });
-  }
-  
-  // ==========================================
-  // REVEAL ELEMENTS ON SCROLL (AOS-like)
-  // ==========================================
-  const revealElements = document.querySelectorAll('[data-aos]');
-  
-  if (revealElements.length > 0) {
-    const revealOnScroll = function() {
-      revealElements.forEach(function(el) {
-        const elementTop = el.getBoundingClientRect().top;
-        const windowHeight = window.innerHeight;
-        
-        if (elementTop < windowHeight * 0.85) {
-          el.classList.add('revealed');
-        }
-      });
-    };
-    
-    window.addEventListener('scroll', revealOnScroll);
-    // Initial check on page load
-    revealOnScroll();
-  }
-  
-  // Reveal text elements (for hero animations)
   const revealTextElements = document.querySelectorAll('.reveal-text');
   
   if (revealTextElements.length > 0) {
@@ -355,7 +369,47 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   
   // ==========================================
-  // FORM VALIDATION (if contact form exists)
+  // STATS COUNTER ANIMATION
+  // ==========================================
+  const statNumbers = document.querySelectorAll('.stat-number');
+  
+  if (statNumbers.length > 0) {
+    const animateCounter = (element) => {
+      const text = element.textContent;
+      const target = parseInt(text.replace(/\D/g, ''));
+      const hasPlus = text.includes('+');
+      const duration = 2000; // 2 seconds
+      const increment = target / (duration / 16); // 60fps
+      let current = 0;
+      
+      const updateCounter = () => {
+        current += increment;
+        if (current < target) {
+          element.textContent = Math.floor(current) + (hasPlus ? '+' : '');
+          requestAnimationFrame(updateCounter);
+        } else {
+          element.textContent = target + (hasPlus ? '+' : '');
+        }
+      };
+      
+      updateCounter();
+    };
+    
+    // Animate counters when they come into view
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+          entry.target.classList.add('counted');
+          animateCounter(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    
+    statNumbers.forEach(stat => counterObserver.observe(stat));
+  }
+  
+  // ==========================================
+  // FORM VALIDATION
   // ==========================================
   const contactForm = document.querySelector('.contact-form');
   
@@ -363,27 +417,153 @@ document.addEventListener('DOMContentLoaded', function() {
     contactForm.addEventListener('submit', function(e) {
       e.preventDefault();
       
-      // Add your form validation and submission logic here
-      const formData = new FormData(this);
+      // Get form fields
+      const name = this.querySelector('[name="name"]');
+      const email = this.querySelector('[name="email"]');
+      const message = this.querySelector('[name="message"]');
       
-      // Example: Basic validation
       let isValid = true;
-      const requiredFields = this.querySelectorAll('[required]');
       
-      requiredFields.forEach(field => {
-        if (!field.value.trim()) {
-          isValid = false;
-          field.classList.add('error');
-        } else {
-          field.classList.remove('error');
-        }
-      });
+      // Simple validation
+      if (name && name.value.trim() === '') {
+        showError(name, 'Please enter your name');
+        isValid = false;
+      }
+      
+      if (email && !isValidEmail(email.value)) {
+        showError(email, 'Please enter a valid email');
+        isValid = false;
+      }
+      
+      if (message && message.value.trim() === '') {
+        showError(message, 'Please enter a message');
+        isValid = false;
+      }
       
       if (isValid) {
-        // Submit form (add your actual submission logic)
-        console.log('Form is valid and ready to submit');
-        // this.submit(); // Uncomment when ready
+        // Submit form or show success message
+        console.log('Form is valid, ready to submit');
+        showSuccess('Thank you! Your message has been sent.');
+        this.reset();
       }
     });
+    
+    // Remove error on input
+    const formInputs = contactForm.querySelectorAll('input, textarea');
+    formInputs.forEach(input => {
+      input.addEventListener('input', function() {
+        removeError(this);
+      });
+    });
   }
+  
+  // Helper function to validate email
+  function isValidEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+  }
+  
+  // Helper function to show error
+  function showError(field, message) {
+    field.classList.add('error');
+    const errorDiv = document.createElement('div');
+    errorDiv.className = 'error-message';
+    errorDiv.textContent = message;
+    errorDiv.style.cssText = 'color: #e74c3c; font-size: 0.85rem; margin-top: 0.5rem;';
+    
+    // Remove existing error message if any
+    const existingError = field.parentElement.querySelector('.error-message');
+    if (existingError) {
+      existingError.remove();
+    }
+    
+    field.parentElement.appendChild(errorDiv);
+  }
+  
+  // Helper function to remove error
+  function removeError(field) {
+    field.classList.remove('error');
+    const errorMessage = field.parentElement.querySelector('.error-message');
+    if (errorMessage) {
+      errorMessage.remove();
+    }
+  }
+  
+  // Helper function to show success message
+  function showSuccess(message) {
+    const successDiv = document.createElement('div');
+    successDiv.className = 'success-message';
+    successDiv.textContent = message;
+    successDiv.style.cssText = `
+      position: fixed;
+      top: 100px;
+      right: 20px;
+      background: #4CAF50;
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      z-index: 9999;
+      animation: slideIn 0.3s ease;
+    `;
+    
+    document.body.appendChild(successDiv);
+    
+    setTimeout(() => {
+      successDiv.style.animation = 'slideOut 0.3s ease';
+      setTimeout(() => {
+        successDiv.remove();
+      }, 300);
+    }, 3000);
+  }
+  
+  // ==========================================
+  // LAZY LOADING IMAGES
+  // ==========================================
+  const lazyImages = document.querySelectorAll('img[data-src]');
+  
+  if ('IntersectionObserver' in window && lazyImages.length > 0) {
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          img.src = img.dataset.src;
+          img.classList.add('loaded');
+          observer.unobserve(img);
+        }
+      });
+    });
+    
+    lazyImages.forEach(img => imageObserver.observe(img));
+  }
+  
 });
+
+// ==========================================
+// ADD ANIMATION KEYFRAMES DYNAMICALLY
+// ==========================================
+const style = document.createElement('style');
+style.textContent = `
+  @keyframes slideIn {
+    from {
+      transform: translateX(400px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideOut {
+    from {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateX(400px);
+      opacity: 0;
+    }
+  }
+`;
+document.head.appendChild(style);

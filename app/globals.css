@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+  
+  body {
+    @apply bg-bg text-text-dark antialiased;
+  }
+}
+
+@layer utilities {
+  .glass-card {
+    @apply bg-white/15 backdrop-blur-md border border-white/30 rounded-3xl;
+  }
+  
+  .gradient-primary {
+    @apply bg-gradient-to-br from-primary to-primary-dark;
+  }
+  
+  .gradient-overlay {
+    @apply bg-gradient-to-br from-primary/95 to-primary-dark/90;
+  }
+}

@@ -19,7 +19,7 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "Boulder Marketing | Christ-First Digital Marketing",
+  title: "Boulder Marketing",
   description:
     "Student-led, Christ-first marketing agency helping small businesses grow online with affordable, strategy-driven marketing.",
   keywords: [

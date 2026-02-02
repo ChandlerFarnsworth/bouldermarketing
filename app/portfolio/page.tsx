@@ -20,7 +20,7 @@ const projects = [
     description: "E-commerce Website Development with Custom Product Showcase",
     category: "web",
     url: "https://highlanderpen.com",
-    image: "/images/portfolio/highlander-pen.jpg",
+    image: "/images/portfolio/highlander-pen.png",
   },
   {
     title: "BBIG Designs",

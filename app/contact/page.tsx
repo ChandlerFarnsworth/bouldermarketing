@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, MapPin, Clock, Instagram, Linkedin } from "lucide-react";
+import { Mail, MapPin, Clock, Calendar, Instagram, Linkedin } from "lucide-react";
 import PageHero from "@/components/ui/PageHero";
 import Button from "@/components/ui/Button";
 
@@ -15,13 +15,37 @@ export default function Contact() {
     message: "",
     subscribe: false,
   });
+  
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission (you'll need to implement this)
-    console.log("Form submitted:", formData);
-    // Redirect to thank you page
-    window.location.href = "/thank-you";
+    setIsSubmitting(true);
+    
+    // Formspree endpoint - you'll need to replace this with your actual endpoint
+    const formspreeEndpoint = "https://formspree.io/f/xlglolrn";
+    
+    try {
+      const response = await fetch(formspreeEndpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        // Success! Redirect to thank you page
+        window.location.href = "/thank-you";
+      } else {
+        alert("Something went wrong. Please try again.");
+        setIsSubmitting(false);
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert("Failed to send message. Please try again.");
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (
@@ -61,6 +85,14 @@ export default function Contact() {
               </div>
 
               <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Honeypot field - hidden from users, catches bots */}
+                <input
+                  type="text"
+                  name="_gotcha"
+                  style={{ display: "none" }}
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
                     <label
@@ -76,7 +108,7 @@ export default function Contact() {
                       required
                       value={formData.name}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border-2 border-primary/20 rounded-xl focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all"
+                      className="w-full px-4 py-3 pl-10 border-2 border-primary/20 rounded-xl focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all"
                       placeholder="Your name"
                     />
                   </div>
@@ -95,7 +127,7 @@ export default function Contact() {
                       required
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border-2 border-primary/20 rounded-xl focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all"
+                      className="w-full px-4 py-3 pl-10 border-2 border-primary/20 rounded-xl focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all"
                       placeholder="your@email.com"
                     />
                   </div>
@@ -114,7 +146,7 @@ export default function Contact() {
                     name="business"
                     value={formData.business}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border-2 border-primary/20 rounded-xl focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all"
+                    className="w-full px-4 py-3 pl-10 border-2 border-primary/20 rounded-xl focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all"
                     placeholder="Your business name (optional)"
                   />
                 </div>
@@ -132,7 +164,7 @@ export default function Contact() {
                     required
                     value={formData.service}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border-2 border-primary/20 rounded-xl focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all"
+                    className="w-full px-4 py-3 pl-10 border-2 border-primary/20 rounded-xl focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all"
                   >
                     <option value="">Select a service</option>
                     <option value="website">Website Design</option>
@@ -177,9 +209,14 @@ export default function Contact() {
                   </label>
                 </div>
 
-                <Button type="submit" variant="primary" size="lg" className="w-full" icon>
-                  Send Message
-                </Button>
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full bg-primary text-white font-semibold px-8 py-4 rounded-2xl hover:bg-primary-dark transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                >
+                  {isSubmitting ? "Sending..." : "Send Message"}
+                  {!isSubmitting && <span>→</span>}
+                </button>
               </form>
             </motion.div>
 

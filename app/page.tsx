@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Code, Hash, Palette, GraduationCap, Cross, DollarSign } from "lucide-react";
+import { Code, Hash, Palette, GraduationCap, DollarSign, HandHeart } from "lucide-react";
 import Button from "@/components/ui/Button";
 import SectionBadge from "@/components/ui/SectionBadge";
 
@@ -28,19 +28,19 @@ const services = [
 
 const features = [
   {
-    icon: GraduationCap,
-    title: "Student-Led Innovation",
-    description: "Fresh ideas with the wisdom of experience",
-  },
-  {
-    icon: Cross,
-    title: "Christ-Centered Values",
-    description: "Integrity and service in everything we do",
-  },
-  {
     icon: DollarSign,
-    title: "Affordable Solutions",
-    description: "Quality marketing accessible to small businesses",
+    title: "Flexible Pricing",
+    description: "We work with your budget to find solutions that fit",
+  },
+  {
+    icon: GraduationCap,
+    title: "Fresh Perspectives",
+    description: "Student-led innovation with professional execution",
+  },
+  {
+    icon: HandHeart,
+    title: "Purpose-Driven",
+    description: "Marketing rooted in integrity and authentic values",
   },
 ];
 
@@ -164,9 +164,9 @@ export default function Home() {
               transition={{ duration: 0.8 }}
             >
               <SectionBadge>Why Choose Us</SectionBadge>
-              <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">Purpose-Driven Marketing</h2>
+              <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">Marketing That Works With You</h2>
               <p className="text-lg text-text-medium mb-8 leading-relaxed">
-                Boulder Marketing brings faith-forward strategy to small businesses. Our student-led team combines fresh perspectives with Christian principles.
+                We believe great marketing should be accessible to every small business. That's why we focus on finding solutions that fit your budget and goals—no cookie-cutter packages, just honest work tailored to your needs.
               </p>
 
               <div className="space-y-4 mb-6">

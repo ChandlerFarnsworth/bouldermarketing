@@ -12,7 +12,7 @@ const projects = [
     title: "Map Mosaic",
     description: "Full-Stack Website Development, UI/UX Design, SEO Optimization, and Third-Party App Integration",
     category: "web",
-    url: "https://mapmosaic-qp86.onrender.com/",
+    url: "https://mapmosaic.net/",
     image: "/images/portfolio/map-mosaic.png",
   },
   {

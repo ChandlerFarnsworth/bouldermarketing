@@ -20,7 +20,7 @@ const values = [
   {
     icon: HandHeart,
     title: "Fair Pricing",
-    description: "Quality web development without the $5k+ markup. Simple as that.",
+    description: "Quality web development without the bloated agency markup. Simple as that.",
     features: [
       "Transparent pricing",
       "No hidden fees",

@@ -46,7 +46,7 @@ const features = [
 
 const stats = [
   { number: "100%", label: "Client Satisfaction" },
-  { number: "50+", label: "Projects Completed" },
+  { number: "10+", label: "Projects Completed" },
   { number: "2+", label: "Years of Excellence" },
 ];
 

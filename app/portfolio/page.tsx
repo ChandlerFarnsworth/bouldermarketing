@@ -24,11 +24,18 @@ const projects = [
   },
   {
     title: "BBIG Designs",
-    description: "Social Media Management for Custom Belt Buckle Business",
-    category: "social",
+    description: "E-commerce Website for a Custom Belt Buckle Business",
+    category: "web",
     url: "https://www.bbigdesigns.store/",
     image: "/images/portfolio/bbig-designs.jpg",
   },
+  {
+    title: "AGO Boulder",
+    description: "End-to-End Social Media Content Production, Including Video Shoots, Graphics, and Shorts",
+    category: "social",
+    url: "https://www.youtube.com/@AGOBoulder",
+    image: "/images/portfolio/ago-boulder.jpg",
+  }
 ];
 
 const testimonials = [

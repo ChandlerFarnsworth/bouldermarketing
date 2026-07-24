@@ -14,14 +14,18 @@
 
 @layer utilities {
   .glass-card {
-    @apply bg-white/15 backdrop-blur-md border border-white/30 rounded-3xl;
+    @apply bg-white border border-line rounded-3xl;
   }
-  
+
   .gradient-primary {
-    @apply bg-gradient-to-br from-primary to-primary-dark;
+    @apply bg-primary;
   }
-  
+
   .gradient-overlay {
-    @apply bg-gradient-to-br from-primary/95 to-primary-dark/90;
+    @apply bg-espresso;
+  }
+
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.2em] text-primary;
   }
 }

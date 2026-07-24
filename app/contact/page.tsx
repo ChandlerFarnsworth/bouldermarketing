@@ -75,7 +75,7 @@ export default function Contact() {
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              className="lg:col-span-2 bg-white rounded-3xl p-8 shadow-lg"
+              className="lg:col-span-2 bg-white border border-line rounded-3xl p-8"
             >
               <div className="mb-8">
                 <h3 className="text-2xl font-display font-bold mb-2">Send Us a Message</h3>
@@ -108,7 +108,7 @@ export default function Contact() {
                       required
                       value={formData.name}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 pl-10 border-2 border-primary/20 rounded-xl focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all"
+                      className="w-full px-4 py-3 border border-line rounded-xl focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all"
                       placeholder="Your name"
                     />
                   </div>
@@ -127,7 +127,7 @@ export default function Contact() {
                       required
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 pl-10 border-2 border-primary/20 rounded-xl focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all"
+                      className="w-full px-4 py-3 border border-line rounded-xl focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all"
                       placeholder="your@email.com"
                     />
                   </div>
@@ -146,7 +146,7 @@ export default function Contact() {
                     name="business"
                     value={formData.business}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 pl-10 border-2 border-primary/20 rounded-xl focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all"
+                    className="w-full px-4 py-3 border border-line rounded-xl focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all"
                     placeholder="Your business name (optional)"
                   />
                 </div>
@@ -164,15 +164,16 @@ export default function Contact() {
                     required
                     value={formData.service}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 pl-10 border-2 border-primary/20 rounded-xl focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all"
+                    className="w-full px-4 py-3 border border-line rounded-xl focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all"
                   >
                     <option value="">Select a service</option>
-                    <option value="website">Website Design</option>
+                    <option value="founder-offer">Founder Offer — $100 Personal Website</option>
+                    <option value="website">Website Development (e-commerce, business, personal)</option>
+                    <option value="app">App Development</option>
+                    <option value="ai-automation">AI Social Media Automation</option>
                     <option value="social">Social Media Management</option>
                     <option value="branding">Brand Identity</option>
-                    <option value="strategy">Marketing Strategy</option>
-                    <option value="content">Content Creation</option>
-                    <option value="other">Other/Not Sure Yet</option>
+                    <option value="other">Other / Not Sure Yet</option>
                   </select>
                 </div>
 
@@ -189,7 +190,7 @@ export default function Contact() {
                     rows={5}
                     value={formData.message}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border-2 border-primary/20 rounded-xl focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all resize-none"
+                    className="w-full px-4 py-3 border border-line rounded-xl focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all resize-none"
                     placeholder="Tell us about your project or ask us a question..."
                   />
                 </div>
@@ -201,7 +202,7 @@ export default function Contact() {
                       name="subscribe"
                       checked={formData.subscribe}
                       onChange={handleChange}
-                      className="w-5 h-5 text-primary border-2 border-primary/20 rounded focus:ring-4 focus:ring-primary/10"
+                      className="w-5 h-5 text-primary border border-line rounded focus:ring-4 focus:ring-primary/10"
                     />
                     <span className="text-text-medium text-sm">
                       Subscribe to our newsletter for marketing tips and updates
@@ -212,7 +213,7 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-primary text-white font-semibold px-8 py-4 rounded-2xl hover:bg-primary-dark transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                  className="w-full bg-primary text-white font-medium px-8 py-4 rounded-full hover:bg-primary-dark transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
                   {isSubmitting ? "Sending..." : "Send Message"}
                   {!isSubmitting && <span>→</span>}
@@ -227,7 +228,7 @@ export default function Contact() {
               transition={{ duration: 0.8 }}
               className="space-y-6"
             >
-              <div className="bg-white rounded-3xl p-8 shadow-lg">
+              <div className="bg-white border border-line rounded-3xl p-8">
                 <h3 className="text-xl font-display font-bold mb-6">Contact Information</h3>
 
                 <div className="space-y-6">
@@ -269,23 +270,23 @@ export default function Contact() {
                   </div>
                 </div>
 
-                <div className="mt-8 pt-8 border-t border-primary/10">
+                <div className="mt-8 pt-8 border-t border-line">
                   <h4 className="font-semibold mb-4">Connect With Us</h4>
                   <div className="flex gap-4">
                     <a
                       href="https://instagram.com/bouldermarketing"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-11 h-11 flex items-center justify-center bg-primary/10 border-2 border-primary rounded-full text-primary hover:bg-primary hover:text-white hover:-translate-y-1 transition-all"
+                      className="w-11 h-11 flex items-center justify-center bg-primary/10 border border-primary rounded-full text-primary hover:bg-primary hover:text-white hover:-translate-y-1 transition-all"
                       aria-label="Instagram"
                     >
                       <Instagram size={20} />
                     </a>
                     <a
-                      href="https://linkedin.com/company/boulder-marketing"
+                      href="https://www.linkedin.com/company/bouldermarketing/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-11 h-11 flex items-center justify-center bg-primary/10 border-2 border-primary rounded-full text-primary hover:bg-primary hover:text-white hover:-translate-y-1 transition-all"
+                      className="w-11 h-11 flex items-center justify-center bg-primary/10 border border-primary rounded-full text-primary hover:bg-primary hover:text-white hover:-translate-y-1 transition-all"
                       aria-label="LinkedIn"
                     >
                       <Linkedin size={20} />

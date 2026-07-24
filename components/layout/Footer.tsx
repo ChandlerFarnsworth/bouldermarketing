@@ -11,24 +11,27 @@ const quickLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-text-dark text-white/80">
-      <div className="container mx-auto px-4 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-12 pb-12 border-b border-white/10">
+    <footer className="bg-espresso text-sand/70">
+      <div className="container mx-auto px-4 py-14">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mb-10 pb-10 border-b border-white/10">
           {/* Brand Section */}
           <div className="lg:col-span-2 max-w-md">
-            <div className="flex items-center gap-3 mb-4">
-              <img 
-                src="/images/footer-logo.svg" 
-                alt="Boulder Marketing Logo" 
-                className="h-10 w-auto"
+            <div className="flex items-center gap-3 mb-3">
+              <img
+                src="/images/footer-logo.svg"
+                alt="Boulder Marketing Logo"
+                className="h-12 w-auto"
               />
-              <h3 className="text-white font-display font-bold text-xl">
-                Boulder Marketing
-              </h3>
+              <span className="flex flex-col leading-none">
+                <span className="font-display font-bold text-lg tracking-wide text-primary-light">
+                  BOULDER
+                </span>
+                <span className="font-display text-[10px] tracking-[0.42em] text-primary-light mt-1">
+                  MARKETING
+                </span>
+              </span>
             </div>
-            <p className="text-primary-light font-semibold">
-              Marketing Built on the Rock
-            </p>
+            <p className="text-sand/60 text-sm">Marketing Built on the Rock</p>
           </div>
 
           {/* Contact Section */}

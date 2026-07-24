@@ -84,28 +84,28 @@ export default function About() {
               className="relative"
             >
               <div className="grid grid-cols-2 gap-4">
-                <div className="relative rounded-3xl overflow-hidden shadow-xl aspect-square">
+                <div className="relative rounded-3xl overflow-hidden aspect-square">
                   <img 
                     src="/images/about/collage-1.jpeg" 
                     alt="Boulder Marketing"
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="relative rounded-3xl overflow-hidden shadow-xl aspect-square">
+                <div className="relative rounded-3xl overflow-hidden aspect-square">
                   <img 
                     src="/images/about/collage-2.jpeg" 
                     alt="Working on projects"
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="relative rounded-3xl overflow-hidden shadow-xl aspect-square">
+                <div className="relative rounded-3xl overflow-hidden aspect-square">
                   <img 
                     src="/images/about/collage-3.jpeg" 
                     alt="Colorado lifestyle"
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="relative rounded-3xl overflow-hidden shadow-xl aspect-square">
+                <div className="relative rounded-3xl overflow-hidden aspect-square">
                   <img 
                     src="/images/about/collage-4.jpeg" 
                     alt="Team collaboration"
@@ -166,9 +166,9 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-white rounded-3xl p-8 text-center border-2 border-primary/20 hover:border-primary hover:-translate-y-3 hover:shadow-3xl transition-all duration-300"
+                className="bg-white rounded-3xl p-8 text-center border border-line hover:border-primary hover:-translate-y-1 transition-all duration-300"
               >
-                <div className="inline-flex items-center justify-center w-20 h-20 gradient-primary rounded-3xl mb-6 shadow-xl">
+                <div className="inline-flex items-center justify-center w-20 h-20 gradient-primary rounded-3xl mb-6">
                   <value.icon size={36} className="text-white" />
                 </div>
                 <h3 className="text-xl font-display font-bold mb-3">{value.title}</h3>
@@ -198,7 +198,7 @@ export default function About() {
               transition={{ duration: 0.8 }}
               className="relative"
             >
-              <div className="relative rounded-3xl overflow-hidden shadow-3xl">
+              <div className="relative rounded-3xl overflow-hidden">
                 <img 
                   src="/images/about/team.jpg" 
                   alt="Boulder Marketing Team"
@@ -239,9 +239,9 @@ export default function About() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="bg-white rounded-3xl p-6 text-center hover:-translate-y-2 transition-all shadow-md hover:shadow-xl"
+                  className="bg-white border border-line rounded-3xl p-6 text-center hover:border-primary transition-colors"
                 >
-                  <div className="w-16 h-16 mx-auto mb-4 gradient-primary rounded-full flex items-center justify-center text-white text-3xl font-display font-extrabold shadow-xl">
+                  <div className="w-16 h-16 mx-auto mb-4 gradient-primary rounded-full flex items-center justify-center text-white text-3xl font-display font-extrabold">
                     {step.number}
                   </div>
                   <h3 className="text-xl font-display font-bold mb-3">{step.title}</h3>
@@ -256,8 +256,6 @@ export default function About() {
       {/* CTA Section */}
       <section className="py-12 gradient-overlay text-white text-center relative overflow-hidden">
         <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-[20%] left-[20%] w-96 h-96 bg-white rounded-full blur-3xl" />
-          <div className="absolute bottom-[20%] right-[20%] w-64 h-64 bg-white rounded-full blur-3xl" />
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
@@ -272,14 +270,14 @@ export default function About() {
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Button 
                 href="/contact" 
-                className="bg-white border-2 border-white text-primary hover:bg-white/90 hover:border-white font-semibold px-8 py-3 rounded-3xl shadow-xl hover:shadow-xl hover:scale-105 transition-all inline-flex items-center justify-center gap-2"
+                className="bg-white border-2 border-white text-primary hover:bg-white/90 hover:border-white font-semibold px-8 py-3 rounded-full transition-all inline-flex items-center justify-center gap-2"
               >
                 Get Started
                 <span>→</span>
               </Button>
               <Button 
                 href="/services" 
-                className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-text-dark hover:border-white font-semibold px-8 py-3 rounded-3xl transition-all inline-flex items-center justify-center"
+                className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-text-dark hover:border-white font-semibold px-8 py-3 rounded-full transition-all inline-flex items-center justify-center"
               >
                 Our Services
               </Button>

@@ -14,19 +14,25 @@ const config: Config = {
           dark: "#905a36",
           light: "#c89a6f",
         },
-        bg: {
-          DEFAULT: "#e7decf",
-          light: "#f5f0e8",
+        espresso: {
+          DEFAULT: "#241C12",
+          card: "#2F2517",
         },
+        sand: "#E8DCC8",
+        bg: {
+          DEFAULT: "#FAF7F2",
+          light: "#FFFFFF",
+        },
+        line: "#E5DACB",
         text: {
-          dark: "#36291a",
-          medium: "#594a3a",
-          light: "#8a7a65",
+          dark: "#241C12",
+          medium: "#6B5B45",
+          light: "#8A7A65",
         },
       },
       fontFamily: {
-        sans: ["var(--font-open-sans)", "sans-serif"],
-        display: ["var(--font-montserrat)", "sans-serif"],
+        sans: ["var(--font-inter)", "sans-serif"],
+        display: ["var(--font-space-grotesk)", "sans-serif"],
       },
       animation: {
         "fade-in-up": "fadeInUp 0.8s ease forwards",

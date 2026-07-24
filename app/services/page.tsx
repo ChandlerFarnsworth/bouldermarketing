@@ -140,14 +140,14 @@ export default function Services() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.05 }}
-                className={`rounded-3xl p-6 border-2 transition-all scroll-mt-24 hover:-translate-y-1 hover:shadow-xl ${
+                className={`rounded-3xl p-6 border transition-all scroll-mt-32 hover:-translate-y-1 ${
                   service.highlight
-                    ? "bg-white border-primary shadow-lg"
-                    : "bg-white border-primary/20 hover:border-primary"
+                    ? "bg-white border-primary"
+                    : "bg-white border-line hover:border-primary"
                 }`}
               >
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="flex-shrink-0 inline-flex items-center justify-center w-12 h-12 gradient-primary rounded-xl shadow-md">
+                  <div className="flex-shrink-0 inline-flex items-center justify-center w-12 h-12 gradient-primary rounded-xl">
                     <service.icon size={24} className="text-white" />
                   </div>
                   <div>
@@ -170,10 +170,11 @@ export default function Services() {
       </section>
 
       {/* Pricing Section */}
-      <section className="py-16 bg-gradient-to-b from-white to-primary/5">
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">Flexible Solutions</h2>
+            <p className="eyebrow mb-3">Pricing</p>
+            <h2 className="text-3xl md:text-4xl font-display font-bold tracking-tight mb-4">Flexible Solutions</h2>
             <p className="text-lg text-text-medium max-w-2xl mx-auto">
               Choose the approach that best fits your business needs and budget
             </p>
@@ -189,25 +190,25 @@ export default function Services() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className={`relative bg-white rounded-3xl p-8 text-center transition-all ${
                   plan.featured
-                    ? "border-2 border-primary shadow-2xl scale-105 pt-12"
-                    : "border-2 border-primary/10 shadow-md hover:-translate-y-2 hover:shadow-xl"
+                    ? "border-2 border-primary pt-12"
+                    : "border border-line hover:-translate-y-1"
                 }`}
               >
                 {plan.featured && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 whitespace-nowrap px-6 py-2 gradient-primary text-white text-sm font-bold uppercase tracking-wider rounded-full shadow-lg">
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 whitespace-nowrap px-6 py-2 gradient-primary text-white text-xs font-semibold uppercase tracking-wider rounded-full">
                     Founder Offer — 10 Spots
                   </div>
                 )}
 
                 <h3 className="text-2xl font-display font-bold mb-2 mt-2">{plan.title}</h3>
                 {plan.price && (
-                  <div className="text-5xl font-display font-extrabold bg-gradient-to-r from-primary to-primary-dark bg-clip-text text-transparent mb-2">
+                  <div className="text-5xl font-display font-bold text-primary mb-2">
                     {plan.price}
                   </div>
                 )}
                 <p className="text-text-medium text-sm mb-6">{plan.subtitle}</p>
 
-                <ul className="space-y-4 mb-8 text-left border-t border-b border-primary/10 py-6">
+                <ul className="space-y-4 mb-8 text-left border-t border-b border-line py-6">
                   {plan.features.map((feature) => (
                     <li key={feature} className="flex items-center gap-3 text-sm text-text-dark">
                       <div className="w-6 h-6 flex items-center justify-center rounded-full bg-primary/10 flex-shrink-0">
@@ -234,8 +235,6 @@ export default function Services() {
       {/* CTA Section */}
       <section className="py-12 gradient-overlay text-white text-center relative overflow-hidden">
         <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-[20%] left-[20%] w-96 h-96 bg-white rounded-full blur-3xl" />
-          <div className="absolute bottom-[20%] right-[20%] w-64 h-64 bg-white rounded-full blur-3xl" />
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
@@ -254,14 +253,14 @@ export default function Services() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
                 href="/contact" 
-                className="bg-white border-2 border-white text-primary hover:bg-white/90 hover:border-white font-semibold px-8 py-3 rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all inline-flex items-center justify-center gap-2"
+                className="bg-white border-2 border-white text-primary hover:bg-white/90 hover:border-white font-semibold px-8 py-3 rounded-full transition-all inline-flex items-center justify-center gap-2"
               >
                 Get in Touch
                 <span>→</span>
               </Button>
               <Button 
                 href="/portfolio" 
-                className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-text-dark hover:border-white font-semibold px-8 py-3 rounded-2xl transition-all inline-flex items-center justify-center"
+                className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-text-dark hover:border-white font-semibold px-8 py-3 rounded-full transition-all inline-flex items-center justify-center"
               >
                 View Our Work
               </Button>

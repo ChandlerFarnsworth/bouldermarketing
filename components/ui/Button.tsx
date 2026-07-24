@@ -20,22 +20,20 @@ export default function Button({
   ...props
 }: ButtonProps) {
   const baseStyles =
-    "inline-flex items-center justify-center gap-2 font-display font-semibold rounded-2xl transition-all";
+    "inline-flex items-center justify-center gap-2 font-medium rounded-full transition-all";
 
   const variants = {
-    primary:
-      "gradient-primary text-white shadow-md hover:shadow-lg hover:-translate-y-0.5",
-    secondary:
-      "bg-primary-dark text-white shadow-sm hover:bg-text-dark hover:-translate-y-0.5",
+    primary: "bg-primary text-white hover:bg-primary-dark",
+    secondary: "bg-espresso text-bg hover:bg-primary",
     outline:
-      "bg-transparent border-2 border-primary text-primary hover:bg-primary hover:text-white",
-    ghost: "bg-white/15 backdrop-blur-md border border-white/30 text-text-dark hover:bg-white/25",
+      "bg-transparent border border-line text-text-dark hover:border-primary hover:text-primary",
+    ghost: "bg-transparent text-text-dark hover:text-primary",
   };
 
   const sizes = {
     sm: "px-4 py-2 text-sm",
-    md: "px-6 py-3 text-base",
-    lg: "px-8 py-4 text-lg",
+    md: "px-6 py-2.5 text-sm",
+    lg: "px-8 py-3.5 text-base",
   };
 
   const classes = `${baseStyles} ${variants[variant]} ${sizes[size]} ${className}`;

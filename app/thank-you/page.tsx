@@ -6,7 +6,7 @@ import Button from "@/components/ui/Button";
 
 export default function ThankYou() {
   return (
-    <section className="min-h-[80vh] flex items-center justify-center py-20 bg-bg">
+    <section className="min-h-[70vh] flex items-center justify-center pt-40 pb-20 bg-bg">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
@@ -29,7 +29,7 @@ export default function ThankYou() {
             Your message has been sent successfully. We&apos;ll be in touch with you shortly.
           </p>
 
-          <div className="bg-white rounded-3xl p-8 shadow-lg mb-8">
+          <div className="bg-white border border-line rounded-3xl p-8 mb-8">
             <h3 className="text-2xl font-display font-bold mb-4">What&apos;s Next?</h3>
             <p className="text-text-medium">
               We&apos;ll review your information and reach out within 1-2 business days to discuss

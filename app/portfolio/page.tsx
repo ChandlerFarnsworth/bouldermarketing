@@ -70,11 +70,9 @@ export default function Portfolio() {
   return (
     <>
       {/* Custom Portfolio Hero */}
-      <section className="relative min-h-[40vh] flex items-center justify-center gradient-overlay text-white text-center overflow-hidden pt-24 pb-16">
+      <section className="relative gradient-overlay text-white text-center overflow-hidden pt-40 pb-16">
         {/* Animated Background Elements */}
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-[20%] left-[20%] w-64 h-64 bg-white rounded-full blur-3xl animate-float" />
-          <div className="absolute bottom-[20%] right-[20%] w-48 h-48 bg-white rounded-full blur-3xl animate-float" style={{ animationDelay: "2s" }} />
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
@@ -88,7 +86,7 @@ export default function Portfolio() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="inline-block px-5 py-2 bg-white/15 backdrop-blur-md border border-white/30 rounded-full text-sm font-semibold uppercase tracking-wider mb-4"
+              className="eyebrow text-primary-light inline-block mb-4"
             >
               Our Work
             </motion.span>
@@ -115,17 +113,17 @@ export default function Portfolio() {
       </section>
 
       {/* Filters */}
-      <section className="sticky top-[73px] bg-white shadow-sm py-6 z-30">
+      <section className="sticky top-[116px] bg-bg border-b border-line py-5 z-30">
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-4">
             {filters.map((filter) => (
               <button
                 key={filter}
                 onClick={() => setActiveFilter(filter)}
-                className={`px-6 py-2.5 rounded-xl font-semibold transition-all ${
+                className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${
                   activeFilter === filter
-                    ? "gradient-primary text-white shadow-md"
-                    : "bg-white border-2 border-primary text-primary hover:bg-primary/10"
+                    ? "bg-espresso text-bg"
+                    : "border border-line text-text-medium hover:border-primary hover:text-primary"
                 }`}
               >
                 {filter.charAt(0).toUpperCase() + filter.slice(1)}
@@ -146,15 +144,15 @@ export default function Portfolio() {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
-                className="bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all group cursor-pointer"
+                className="bg-white border border-line rounded-3xl overflow-hidden hover:-translate-y-1 hover:border-primary transition-all group cursor-pointer"
               >
-                <div className="relative h-64 bg-gradient-to-br from-primary/20 to-primary-dark/10 overflow-hidden">
+                <div className="relative h-64 bg-sand overflow-hidden">
                   <img 
                     src={project.image} 
                     alt={project.title}
                     className="w-full h-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/95 to-primary-dark/90 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                  <div className="absolute inset-0 bg-espresso/90 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                     <div className="text-center p-6">
                       <span className="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-semibold mb-4">
                         {project.category === "web" ? "Website Design" : project.category === "brand" ? "Branding" : "Social Media"}
@@ -163,7 +161,7 @@ export default function Portfolio() {
                         href={project.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-6 py-3 bg-white text-primary rounded-xl font-semibold hover:scale-105 transition-transform"
+                        className="inline-flex items-center gap-2 px-6 py-3 bg-white text-espresso rounded-full font-medium transition-transform"
                       >
                         View Live Site
                         <ExternalLink size={18} />
@@ -186,7 +184,7 @@ export default function Portfolio() {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <span className="inline-block px-5 py-2 gradient-primary text-white rounded-full text-sm font-semibold uppercase tracking-wider mb-4">
+            <span className="eyebrow inline-block mb-3">
               What Clients Say
             </span>
             <h2 className="text-3xl md:text-4xl font-display font-bold">Client Testimonials</h2>
@@ -200,7 +198,7 @@ export default function Portfolio() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-white rounded-3xl p-8 shadow-md hover:shadow-xl hover:-translate-y-2 transition-all"
+                className="bg-white border border-line rounded-3xl p-8 hover:border-primary transition-colors"
               >
                 <div className="w-12 h-12 gradient-primary rounded-full flex items-center justify-center mb-6">
                   <Quote size={24} className="text-white" />
@@ -208,8 +206,8 @@ export default function Portfolio() {
                 <p className="text-text-dark italic mb-6 leading-relaxed">
                   &ldquo;{testimonial.quote}&rdquo;
                 </p>
-                <div className="flex items-center gap-4 pt-6 border-t border-primary/10">
-                  <div className="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 border-2 border-primary text-primary-dark font-bold">
+                <div className="flex items-center gap-4 pt-6 border-t border-line">
+                  <div className="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 border border-primary text-primary-dark font-bold">
                     {testimonial.initials}
                   </div>
                   <div>
@@ -226,8 +224,6 @@ export default function Portfolio() {
       {/* CTA */}
       <section className="py-12 gradient-overlay text-white text-center relative overflow-hidden">
         <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-[20%] left-[20%] w-96 h-96 bg-white rounded-full blur-3xl" />
-          <div className="absolute bottom-[20%] right-[20%] w-64 h-64 bg-white rounded-full blur-3xl" />
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
@@ -246,14 +242,14 @@ export default function Portfolio() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
                 href="/contact" 
-                className="bg-white border-2 border-white text-primary hover:bg-white/90 hover:border-white font-semibold px-8 py-3 rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all inline-flex items-center justify-center gap-2"
+                className="bg-white border-2 border-white text-primary hover:bg-white/90 hover:border-white font-semibold px-8 py-3 rounded-full transition-all inline-flex items-center justify-center gap-2"
               >
                 Start Your Project
                 <span>→</span>
               </Button>
               <Button 
                 href="/services" 
-                className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-text-dark hover:border-white font-semibold px-8 py-3 rounded-2xl transition-all inline-flex items-center justify-center"
+                className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-text-dark hover:border-white font-semibold px-8 py-3 rounded-full transition-all inline-flex items-center justify-center"
               >
                 View Our Services
               </Button>

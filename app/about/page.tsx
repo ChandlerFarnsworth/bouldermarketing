@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { GraduationCap, Sprout, HandHeart, Check } from "lucide-react";
 import PageHero from "@/components/ui/PageHero";
 import SectionBadge from "@/components/ui/SectionBadge";
-import Button from "@/components/ui/Button";
+import CtaSection from "@/components/ui/CtaSection";
 
 const values = [
   {
@@ -253,38 +253,10 @@ export default function About() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-12 gradient-overlay text-white text-center relative overflow-hidden">
-        <div className="absolute inset-0 opacity-5">
-        </div>
-
-        <div className="container mx-auto px-4 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">Ready to Work Together?</h2>
-            <p className="text-xl text-white/90 mb-8">Let&apos;s bring your vision to life with purpose-driven marketing.</p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Button 
-                href="/contact" 
-                className="bg-white border-2 border-white text-primary hover:bg-white/90 hover:border-white font-semibold px-8 py-3 rounded-full transition-all inline-flex items-center justify-center gap-2"
-              >
-                Get Started
-                <span>→</span>
-              </Button>
-              <Button 
-                href="/services" 
-                className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-text-dark hover:border-white font-semibold px-8 py-3 rounded-full transition-all inline-flex items-center justify-center"
-              >
-                Our Services
-              </Button>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      <CtaSection
+        title="Ready to work together?"
+        description="Let's bring your vision to life."
+      />
     </>
   );
 }

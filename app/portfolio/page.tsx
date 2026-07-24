@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { ExternalLink, Quote } from "lucide-react";
-import Button from "@/components/ui/Button";
+import CtaSection from "@/components/ui/CtaSection";
 
 const filters = ["all", "web", "brand", "social"];
 
@@ -113,7 +113,7 @@ export default function Portfolio() {
       </section>
 
       {/* Filters */}
-      <section className="sticky top-[116px] bg-bg border-b border-line py-5 z-30">
+      <section className="sticky top-[105px] bg-bg border-b border-line py-5 z-30">
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-4">
             {filters.map((filter) => (
@@ -221,42 +221,11 @@ export default function Portfolio() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-12 gradient-overlay text-white text-center relative overflow-hidden">
-        <div className="absolute inset-0 opacity-5">
-        </div>
-
-        <div className="container mx-auto px-4 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
-              Ready to Transform Your Online Presence?
-            </h2>
-            <p className="text-xl text-white/90 mb-8">
-              Let&apos;s build something meaningful together that brings your vision to life.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                href="/contact" 
-                className="bg-white border-2 border-white text-primary hover:bg-white/90 hover:border-white font-semibold px-8 py-3 rounded-full transition-all inline-flex items-center justify-center gap-2"
-              >
-                Start Your Project
-                <span>→</span>
-              </Button>
-              <Button 
-                href="/services" 
-                className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-text-dark hover:border-white font-semibold px-8 py-3 rounded-full transition-all inline-flex items-center justify-center"
-              >
-                View Our Services
-              </Button>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      <CtaSection
+        title="Ready to grow your business?"
+        description="Let's build something that lasts."
+        cta="Start your project"
+      />
     </>
   );
 }

@@ -13,7 +13,7 @@ const navigation = [
   { name: "Contact", href: "/contact" },
 ];
 
-export const HEADER_OFFSET = 116;
+export const HEADER_OFFSET = 105;
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);

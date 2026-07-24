@@ -20,13 +20,13 @@ export default function Footer() {
               <img
                 src="/images/footer-logo.svg"
                 alt="Boulder Marketing Logo"
-                className="h-12 w-auto"
+                className="h-14 w-auto"
               />
               <span className="flex flex-col leading-none">
-                <span className="font-display font-bold text-lg tracking-wide text-primary-light">
+                <span className="font-display font-bold text-2xl tracking-wide text-primary-light">
                   BOULDER
                 </span>
-                <span className="font-display text-[10px] tracking-[0.42em] text-primary-light mt-1">
+                <span className="font-display text-xs tracking-[0.45em] text-primary-light mt-1">
                   MARKETING
                 </span>
               </span>

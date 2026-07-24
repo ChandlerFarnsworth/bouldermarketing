@@ -22,6 +22,19 @@ export default function Header() {
   return (
     <>
       <header className="fixed top-0 left-0 right-0 z-50 bg-bg/95 backdrop-blur-md border-b border-line">
+        {/* Announcement bar — above the nav */}
+        <Link
+          href="/#founder-offer"
+          className="block bg-espresso text-sand text-xs text-center px-4 py-2 hover:text-white transition-colors"
+        >
+          <Zap size={12} className="inline -mt-0.5 mr-1.5 text-primary-light" aria-hidden />
+          <span className="font-semibold">Founder offer:</span> first 10 personal
+          websites, $100 flat — no recurring fees{" "}
+          <span className="text-primary-light" aria-hidden>
+            →
+          </span>
+        </Link>
+
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center py-3">
             <Link
@@ -31,13 +44,13 @@ export default function Header() {
               <img
                 src="/images/logo-mark.png"
                 alt="Boulder Marketing mountain logo"
-                className="h-11 w-auto"
+                className="h-12 w-auto"
               />
               <span className="flex flex-col leading-none">
-                <span className="font-display font-bold text-lg tracking-wide text-primary">
+                <span className="font-display font-bold text-2xl tracking-wide text-primary">
                   BOULDER
                 </span>
-                <span className="font-display text-[10px] tracking-[0.42em] text-primary mt-1">
+                <span className="font-display text-xs tracking-[0.45em] text-primary mt-1">
                   MARKETING
                 </span>
               </span>
@@ -77,19 +90,6 @@ export default function Header() {
             </button>
           </div>
         </div>
-
-        {/* Announcement bar — under the nav */}
-        <Link
-          href="/#founder-offer"
-          className="block bg-espresso text-sand text-xs text-center px-4 py-2 hover:text-white transition-colors"
-        >
-          <Zap size={12} className="inline -mt-0.5 mr-1.5 text-primary-light" aria-hidden />
-          <span className="font-semibold">Founder offer:</span> first 10 personal
-          websites, $100 flat — no recurring fees{" "}
-          <span className="text-primary-light" aria-hidden>
-            →
-          </span>
-        </Link>
       </header>
 
       {/* Mobile Overlay */}

@@ -23,8 +23,8 @@ export default function Button({
     "inline-flex items-center justify-center gap-2 font-medium rounded-full transition-all";
 
   const variants = {
-    primary: "bg-primary text-white hover:bg-primary-dark",
-    secondary: "bg-espresso text-bg hover:bg-primary",
+    primary: "bg-espresso text-white hover:bg-primary",
+    secondary: "bg-primary text-white hover:bg-primary-dark",
     outline:
       "bg-transparent border border-line text-text-dark hover:border-primary hover:text-primary",
     ghost: "bg-transparent text-text-dark hover:text-primary",

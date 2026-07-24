@@ -1,60 +1,80 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Code, Hash, Palette, GraduationCap, DollarSign, HandHeart } from "lucide-react";
+import { Code, Smartphone, Bot, Layers, DollarSign, HandHeart, Check, Zap } from "lucide-react";
 import Button from "@/components/ui/Button";
 import SectionBadge from "@/components/ui/SectionBadge";
 
 const services = [
   {
     icon: Code,
-    title: "Website Design",
-    description: "Modern websites that reflect your values and convert visitors.",
-    href: "/services",
+    title: "Website Development",
+    description: "E-commerce stores, business sites, and personal websites — built to convert.",
+    href: "/services#website-development",
   },
   {
-    icon: Hash,
-    title: "Social Media",
-    description: "Authentic content that builds meaningful community connections.",
-    href: "/services",
+    icon: Smartphone,
+    title: "App Development",
+    description: "Custom apps designed, built, and deployed for your business.",
+    href: "/services#app-development",
   },
   {
-    icon: Palette,
-    title: "Brand Identity",
-    description: "Visuals that communicate your mission with purpose and integrity.",
-    href: "/services",
+    icon: Bot,
+    title: "AI Social Automation",
+    description: "AI drafts your posts, you approve, and they publish to your platforms.",
+    href: "/services#ai-automation",
   },
 ];
 
 const features = [
   {
-    icon: DollarSign,
-    title: "Flexible Pricing",
-    description: "We work with your budget to find solutions that fit",
+    icon: Layers,
+    title: "Full-Stack Capability",
+    description: "Websites and apps, from design to deployment",
   },
   {
-    icon: GraduationCap,
-    title: "Fresh Perspectives",
-    description: "Student-led innovation with professional execution",
+    icon: DollarSign,
+    title: "Fair Pricing",
+    description: "Honest pricing, transparent process, no surprises",
   },
   {
     icon: HandHeart,
-    title: "Purpose-Driven",
-    description: "Marketing rooted in integrity and authentic values",
+    title: "Built to Last",
+    description: "Quality work with long-term value, rooted in integrity",
   },
 ];
 
 const stats = [
   { number: "100%", label: "Client Satisfaction" },
-  { number: "10+", label: "Projects Completed" },
+  { number: "7+", label: "Businesses Transformed" },
   { number: "2+", label: "Years of Excellence" },
+];
+
+const offerTerms = [
+  "$100 one-time payment — no recurring fees, ever",
+  "Custom design, mobile-friendly, SEO-ready",
+  "You own everything — site, code, and domain",
 ];
 
 export default function Home() {
   return (
     <>
+      {/* Announcement Bar (sits directly below the fixed nav) */}
+      <div className="mt-[73px] gradient-primary text-white">
+        <a
+          href="#founder-offer"
+          className="container mx-auto px-4 py-2.5 flex items-center justify-center gap-2 text-sm hover:opacity-85 transition-opacity"
+        >
+          <Zap size={16} className="text-yellow-200 flex-shrink-0" />
+          <span>
+            <strong>Founder Offer:</strong> First 10 personal websites for $100 flat — no recurring fees
+          </span>
+          <span aria-hidden>→</span>
+        </a>
+      </div>
+
       {/* Hero Section */}
-      <section className="relative min-h-[80vh] flex items-center gradient-overlay text-white overflow-hidden pt-20 pb-24">
+      <section className="relative min-h-[75vh] flex items-center gradient-overlay text-white overflow-hidden pt-12 pb-24">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-[20%] left-[20%] w-72 h-72 bg-white rounded-full blur-3xl animate-float" />
           <div className="absolute bottom-[30%] right-[10%] w-48 h-48 bg-white rounded-full blur-3xl animate-float" style={{ animationDelay: "2s" }} />
@@ -73,7 +93,7 @@ export default function Home() {
                 on the <span className="bg-gradient-to-r from-white to-white/70 bg-clip-text text-transparent">Rock</span>
               </h1>
               <p className="text-lg md:text-xl mb-8 text-white/95">
-                We help small businesses share their values through purpose-driven digital marketing.
+                Apps, websites, and AI-powered marketing for small businesses — built solid, built to last.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button 
@@ -164,9 +184,9 @@ export default function Home() {
               transition={{ duration: 0.8 }}
             >
               <SectionBadge>Why Choose Us</SectionBadge>
-              <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">Marketing That Works With You</h2>
+              <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">Digital Foundations That Last</h2>
               <p className="text-lg text-text-medium mb-8 leading-relaxed">
-                We believe great marketing should be accessible to every small business. That's why we focus on finding solutions that fit your budget and goals—no cookie-cutter packages, just honest work tailored to your needs.
+                From apps to e-commerce stores, we combine modern technology with strategy that puts your business first—no cookie-cutter packages, just honest work tailored to your needs.
               </p>
 
               <div className="space-y-4 mb-6">
@@ -215,6 +235,44 @@ export default function Home() {
               ))}
             </motion.div>
           </div>
+        </div>
+      </section>
+
+      {/* Founder Offer Section */}
+      <section id="founder-offer" className="py-16 bg-bg scroll-mt-24">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="max-w-2xl mx-auto bg-white rounded-3xl border-2 border-primary shadow-2xl p-8 md:p-12 text-center"
+          >
+            <div className="inline-block px-5 py-2 gradient-primary text-white text-sm font-bold uppercase tracking-wider rounded-full shadow-lg mb-6">
+              Founder Offer — Limited to 10 Spots
+            </div>
+            <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
+              Your Personal Website for{" "}
+              <span className="bg-gradient-to-r from-primary to-primary-dark bg-clip-text text-transparent">$100</span>
+            </h2>
+            <p className="text-lg text-text-medium mb-8 max-w-lg mx-auto">
+              We&apos;re launching our website development service, and the first 10 clients get a professionally built personal website for a one-time flat fee.
+            </p>
+            <ul className="max-w-md mx-auto text-left space-y-3 mb-4">
+              {offerTerms.map((term) => (
+                <li key={term} className="flex items-baseline gap-3 text-text-dark">
+                  <Check size={16} className="text-primary flex-shrink-0 translate-y-0.5" />
+                  <span>{term}</span>
+                </li>
+              ))}
+            </ul>
+            <p className="text-sm text-text-medium mb-8">
+              Domain registration paid separately by you (typically $10–20/year).
+            </p>
+            <Button href="/contact" icon>
+              Claim Your Spot
+            </Button>
+          </motion.div>
         </div>
       </section>
 

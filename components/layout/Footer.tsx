@@ -26,19 +26,9 @@ export default function Footer() {
                 Boulder Marketing
               </h3>
             </div>
-            <p className="text-primary-light font-semibold mb-6">
+            <p className="text-primary-light font-semibold">
               Marketing Built on the Rock
             </p>
-            <div className="bg-white/5 border-l-4 border-primary rounded-lg p-4">
-              <p className="italic text-sm mb-2 leading-relaxed">
-                &ldquo;Therefore everyone who hears these words of mine and puts them
-                into practice is like a wise man who built his house on the
-                rock.&rdquo;
-              </p>
-              <p className="text-primary-light font-semibold text-sm">
-                Matthew 7:24
-              </p>
-            </div>
           </div>
 
           {/* Contact Section */}

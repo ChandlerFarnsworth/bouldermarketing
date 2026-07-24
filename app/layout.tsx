@@ -19,14 +19,16 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "Boulder Marketing",
+  title: "Boulder Marketing | Marketing Built on the Rock",
   description:
-    "Student-led, Christ-first marketing agency helping small businesses grow online with affordable, strategy-driven marketing.",
+    "Marketing Built on the Rock. We build apps and websites — e-commerce, business, and personal sites — and run AI-powered social media for small businesses.",
   keywords: [
-    "marketing",
-    "digital marketing",
-    "web design",
+    "web development",
+    "app development",
+    "e-commerce",
+    "website design",
     "social media",
+    "AI automation",
     "Boulder",
     "Colorado",
   ],

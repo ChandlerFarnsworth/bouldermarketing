@@ -1,66 +1,81 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Code, Hash, Palette, TrendingUp, Camera, Check } from "lucide-react";
+import { Code, Smartphone, Bot, Hash, Palette, Check, Sparkles } from "lucide-react";
 import PageHero from "@/components/ui/PageHero";
-import SectionBadge from "@/components/ui/SectionBadge";
 import Button from "@/components/ui/Button";
 
 const services = [
   {
+    id: "website-development",
     icon: Code,
-    title: "Website Design",
-    description: "Clean, modern, and easy to manage websites built to convert visitors into customers.",
+    title: "Website Development",
+    description: "Modern, fast websites built to convert.",
     features: [
-      "Responsive design for all devices",
-      "SEO-optimized structure",
-      "Easy content management",
-      "Brand-aligned user experience",
+      "E-commerce stores with secure checkout",
+      "Business & portfolio websites",
+      "Personal websites & landing pages",
+      "Responsive, SEO-optimized, easy to manage",
     ],
   },
   {
+    id: "app-development",
+    icon: Smartphone,
+    title: "App Development",
+    description: "Custom apps from idea to launch.",
+    features: [
+      "Custom design & build",
+      "Deployment handled for you",
+      "Clean code you own",
+      "Ongoing support available",
+    ],
+  },
+  {
+    id: "ai-automation",
+    icon: Bot,
+    title: "AI Social Automation",
+    description: "You approve, we publish.",
+    features: [
+      "AI-drafted posts from your ideas",
+      "One-tap approval workflow",
+      "Auto-publishing to your platforms",
+      "Consistent presence, zero busywork",
+    ],
+  },
+  {
+    id: "social-media",
     icon: Hash,
     title: "Social Media Management",
-    description: "Consistent, purposeful content that engages your audience and grows your online presence.",
+    description: "Purposeful content that grows your presence.",
     features: [
-      "Content strategy development",
+      "Content strategy",
       "Regular posting schedule",
       "Audience engagement",
       "Performance analytics",
     ],
   },
   {
+    id: "brand-identity",
     icon: Palette,
     title: "Brand Identity",
-    description: "Logos, colors, and visuals that communicate your mission with clarity and purpose.",
+    description: "Visuals that communicate with clarity.",
     features: [
       "Logo design & refinement",
-      "Color palette selection",
-      "Typography guidance",
+      "Color & typography",
       "Brand usage guidelines",
     ],
   },
   {
-    icon: TrendingUp,
-    title: "Marketing Strategy",
-    description: "Clarity on your audience, message, and growth path to achieve meaningful business results.",
+    id: "founder-offer",
+    icon: Sparkles,
+    title: "Founder Offer",
+    description: "First 10 personal websites — $100 flat.",
     features: [
-      "Audience identification",
-      "Competitive analysis",
-      "Channel optimization",
-      "ROI-focused planning",
+      "One-time payment, no recurring fees",
+      "You own the site, code & domain",
+      "Only 10 spots available",
     ],
-  },
-  {
-    icon: Camera,
-    title: "Content Creation",
-    description: "Photo, video, and copywriting tailored to your brand voice and audience preferences.",
-    features: [
-      "Professional photography",
-      "Engaging video content",
-      "Conversion-focused copy",
-      "Multi-platform optimization",
-    ],
+    highlight: true,
   },
 ];
 
@@ -68,6 +83,7 @@ const pricing = [
   {
     title: "Project-Based",
     subtitle: "Perfect for specific needs",
+    price: null,
     features: [
       "Defined scope and timeline",
       "One-time investment",
@@ -77,25 +93,28 @@ const pricing = [
     featured: false,
   },
   {
-    title: "Monthly Retainer",
-    subtitle: "Ongoing marketing support",
+    title: "Personal Website",
+    subtitle: "Founder offer — first 10 clients",
+    price: "$100",
     features: [
-      "Consistent brand presence",
-      "Regular content creation",
-      "Performance analytics",
+      "Custom, mobile-friendly site",
+      "One-time payment — no recurring fees",
+      "You own the site, code & domain",
+      "Domain registration paid by you (~$10–20/yr)",
     ],
-    cta: "Start a Conversation",
+    cta: "Claim Your Spot",
     featured: true,
   },
   {
-    title: "Consultation",
-    subtitle: "Expert guidance",
+    title: "Monthly Retainer",
+    subtitle: "Ongoing marketing support",
+    price: null,
     features: [
-      "Strategic direction",
-      "Implementation guidance",
-      "Action-oriented advice",
+      "Consistent brand presence",
+      "AI-powered content pipeline",
+      "Performance analytics",
     ],
-    cta: "Book a Session",
+    cta: "Start a Conversation",
     featured: false,
   },
 ];
@@ -105,60 +124,41 @@ export default function Services() {
     <>
       <PageHero
         label="What We Offer"
-        title="Strategic Marketing Solutions"
-        description="Simple, affordable marketing services — done with purpose."
+        title="Apps, Websites & Marketing"
+        description="Development and marketing services built solid — and priced for small businesses."
       />
 
       {/* Services Grid */}
       <section className="py-16 bg-bg">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.slice(0, 3).map((service, index) => (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            {services.map((service, index) => (
               <motion.div
                 key={service.title}
+                id={service.id}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-white rounded-3xl p-8 border-2 border-primary/20 hover:border-primary hover:-translate-y-2 hover:shadow-xl transition-all"
+                transition={{ duration: 0.6, delay: index * 0.05 }}
+                className={`rounded-3xl p-6 border-2 transition-all scroll-mt-24 hover:-translate-y-1 hover:shadow-xl ${
+                  service.highlight
+                    ? "bg-white border-primary shadow-lg"
+                    : "bg-white border-primary/20 hover:border-primary"
+                }`}
               >
-                <div className="inline-flex items-center justify-center w-20 h-20 gradient-primary rounded-2xl mb-6 shadow-lg">
-                  <service.icon size={36} className="text-white" />
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="flex-shrink-0 inline-flex items-center justify-center w-12 h-12 gradient-primary rounded-xl shadow-md">
+                    <service.icon size={24} className="text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-display font-bold leading-tight">{service.title}</h3>
+                    <p className="text-text-medium text-sm">{service.description}</p>
+                  </div>
                 </div>
-                <h3 className="text-xl font-display font-bold mb-3">{service.title}</h3>
-                <p className="text-text-medium mb-6">{service.description}</p>
-                <ul className="space-y-3">
+                <ul className="space-y-2">
                   {service.features.map((feature) => (
-                    <li key={feature} className="flex items-center gap-3 text-sm text-text-dark">
-                      <Check size={16} className="text-primary flex-shrink-0" />
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Bottom 2 services - centered */}
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mt-8">
-            {services.slice(3).map((service, index) => (
-              <motion.div
-                key={service.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-white rounded-3xl p-8 border-2 border-primary/20 hover:border-primary hover:-translate-y-2 hover:shadow-xl transition-all"
-              >
-                <div className="inline-flex items-center justify-center w-20 h-20 gradient-primary rounded-2xl mb-6 shadow-lg">
-                  <service.icon size={36} className="text-white" />
-                </div>
-                <h3 className="text-xl font-display font-bold mb-3">{service.title}</h3>
-                <p className="text-text-medium mb-6">{service.description}</p>
-                <ul className="space-y-3">
-                  {service.features.map((feature) => (
-                    <li key={feature} className="flex items-center gap-3 text-sm text-text-dark">
-                      <Check size={16} className="text-primary flex-shrink-0" />
+                    <li key={feature} className="flex items-baseline gap-2.5 text-sm text-text-dark">
+                      <Check size={14} className="text-primary flex-shrink-0 translate-y-0.5" />
                       <span>{feature}</span>
                     </li>
                   ))}
@@ -189,17 +189,22 @@ export default function Services() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className={`relative bg-white rounded-3xl p-8 text-center transition-all ${
                   plan.featured
-                    ? "border-2 border-primary shadow-2xl scale-105"
+                    ? "border-2 border-primary shadow-2xl scale-105 pt-12"
                     : "border-2 border-primary/10 shadow-md hover:-translate-y-2 hover:shadow-xl"
                 }`}
               >
                 {plan.featured && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-6 py-2 gradient-primary text-white text-sm font-bold uppercase tracking-wider rounded-full shadow-lg">
-                    Most Popular
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 whitespace-nowrap px-6 py-2 gradient-primary text-white text-sm font-bold uppercase tracking-wider rounded-full shadow-lg">
+                    Founder Offer — 10 Spots
                   </div>
                 )}
 
                 <h3 className="text-2xl font-display font-bold mb-2 mt-2">{plan.title}</h3>
+                {plan.price && (
+                  <div className="text-5xl font-display font-extrabold bg-gradient-to-r from-primary to-primary-dark bg-clip-text text-transparent mb-2">
+                    {plan.price}
+                  </div>
+                )}
                 <p className="text-text-medium text-sm mb-6">{plan.subtitle}</p>
 
                 <ul className="space-y-4 mb-8 text-left border-t border-b border-primary/10 py-6">
